@@ -67,3 +67,5 @@ end
 
 gem 'sidekiq', '< 7'
 gem 'redis-rails'
+gem "devise" 
+gem 'simple_form'
