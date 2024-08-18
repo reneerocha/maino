@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @invoice %>
+
+<div>
+  <%= link_to "Voltar lista Notas Fiscais", invoices_path %>
+
+  <%= button_to "Deletar NF", @invoice, method: :delete %>
+</div>

@@ -10,9 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_16_221111) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_17_013600) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "invoices", force: :cascade do |t|
+    t.string "serie"
+    t.string "nnf"
+    t.datetime "dhemi"
+    t.string "emit"
+    t.string "xnome"
+    t.decimal "total_vnf", precision: 10, scale: 2
+    t.decimal "total_vtotrib", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "nitem"
+    t.string "xprod"
+    t.string "ncm"
+    t.string "cfop"
+    t.string "ucom"
+    t.string "qcom"
+    t.decimal "vuncom", precision: 10, scale: 2
+    t.decimal "vicms", precision: 10, scale: 2
+    t.decimal "vipi", precision: 10, scale: 2
+    t.decimal "vpis", precision: 10, scale: 2
+    t.decimal "vcofins", precision: 10, scale: 2
+    t.bigint "invoice_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invoice_id"], name: "index_products_on_invoice_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +56,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_16_221111) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "products", "invoices"
 end

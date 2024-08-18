@@ -61,7 +61,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-
+  gem 'pry-remote'
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end
 
@@ -69,3 +69,4 @@ gem 'sidekiq', '< 7'
 gem 'redis-rails'
 gem "devise" 
 gem 'simple_form'
+gem 'rexml'

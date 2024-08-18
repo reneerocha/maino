@@ -1,0 +1,17 @@
+<h1>Nova Importação</h1>
+
+<p>"Escolha o arquivo XML" </p>
+<%= form_with(url: upload_path, method: :post, local: true) do |form| %>
+    <div>
+        <%= form.label "Arquivo" %>
+        <%= form.file_field :file %>
+    </div>
+    <br>
+    <%= form.submit "Importar", class: 'btn btn-primary' %>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Voltar lista Notas Fiscais", invoices_path %>
+</div>
