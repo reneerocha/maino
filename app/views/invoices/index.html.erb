@@ -10,6 +10,41 @@
 <br><br>
 <h1>Relatório de Notas Fiscais Importadas</h1>
 
+<%= form_for_filterrific @filterrific do |f| %>
+  <div>
+    <div class="col-md-3">
+      <div>
+        <label>Busca</label>
+        <%= f.text_field :search_query, placeholder: "Emitente ou Destinatário", class: "form-control" %>
+      </div>
+    </div>
+    <br>
+    <div>
+      <div>
+        <label>Data maior ou igual</label>
+        <%= f.date_field :dhemi_gte, placeholder: "Período", class: "form-control" %>
+      </div>
+    </div>
+    <br>
+    <div>
+      <div>
+        <labe>Data menor</label>
+        <%= f.date_field :dhemi_lt, placeholder: "Período", class: "form-control" %>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="col-md-12">
+    <%= f.submit 'Buscar' %>
+  </div>
+  <div class="col-md-12">
+    <p>
+      <%= link_to('Reset filters', reset_filterrific_url,) %>
+    </p>
+  </div>
+
+<% end %>
+
 <div>
   <table>
   <thead>

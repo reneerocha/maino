@@ -2,8 +2,21 @@ class InvoicesController < ApplicationController
   before_action :set_invoice, only: %i[ show edit update destroy ]
 
   # GET /invoices or /invoices.json
+  # def index
+  #   @invoices = Invoice.all
+  # end
+
   def index
-    @invoices = Invoice.all
+    @filterrific = initialize_filterrific(
+      Invoice,
+      params[:filterrific]
+    ) or return
+    @invoices = @filterrific.find
+ 
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /invoices/1 or /invoices/1.json

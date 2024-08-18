@@ -70,3 +70,4 @@ gem 'redis-rails'
 gem "devise" 
 gem 'simple_form'
 gem 'rexml'
+gem 'filterrific'
