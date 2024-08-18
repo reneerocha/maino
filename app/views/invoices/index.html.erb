@@ -8,15 +8,78 @@
   <%= link_to 'Sign in', new_user_session_path %>
 <% end %>
 <br><br>
-<h1>Notas Fiscais</h1>
+<h1>Relatório de Notas Fiscais Importadas</h1>
 
-<div id="invoices">
-  <% @invoices.each do |invoice| %>
-    <%= render invoice %>
-    <p>
-      <%= link_to "Ver Detalhes NF", invoice %>
-    </p>
+<div>
+  <table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><strong>Série: </strong><%= invoice.serie %></td>
+        <td><strong>| Número: </strong><%= invoice.nnf %></td>
+        <td><strong>| Data de Emissão: </strong><%= invoice.dhemi.strftime("%d/%m/%Y")%></td>
+        <td><strong>| Emitente: </strong><%= invoice.emit%></td>
+        <td><strong>| Destinatário: </strong><%= invoice.xnome %></td>
+        <td><strong>| Total Imposto: </strong><%= invoice.total_vtotrib %></td>
+        <td><strong>| Total NF: </strong><%= invoice.total_vnf %></td>
+        <td><%= button_to "Excluir NF", invoice, method: :delete %></td>
+      </tr>
+
+      <table>
+      <thead>
+        <tr>
+          <th> - </th>
+          <th>Item</th>
+          <th><Produto</th>
+          <th><NCM</th>
+          <th>CFOP</th>
+          <th>uCom</th>
+          <th>Qtd</th>
+          <th><Valor Unitário</th>
+          <th><ICMS</th>
+          <th>IPI</th>
+          <th>PIS</th>
+          <th>COFINS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% invoice.products.each do |product| %>
+          <tr>
+            <td></td>
+            <td><%= product.nitem %></td>
+            <td><%= product.xprod %></td>
+            <td><%= product.ncm %></td>
+            <td><%= product.cfop %></td>
+            <td><%= product.ucom %></td>
+            <td><%= product.qcom %></td>
+            <td><%= product.vuncom %></td>
+            <td><%= product.vicms %></td>
+            <td><%= product.vipi %></td>
+            <td><%= product.vpis %></td>
+            <td><%= product.vcofins %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+  
   <% end %>
+  </tbody>
+</table>
+
 </div>
 
+<br><br>
 <%= link_to "Importar novas NFs", new_invoice_path %>
