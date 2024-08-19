@@ -71,3 +71,4 @@ gem "devise"
 gem 'simple_form'
 gem 'rexml'
 gem 'filterrific'
+gem "dockerfile-rails", ">= 1.6", :group => :development
