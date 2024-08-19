@@ -12,13 +12,15 @@ Projeto Desafio Maino
 
 3- docker-compose build
 
-4- docker-compose run web rake db:setup
+4- docker-compose run web bundle install
 
-5- docker-compose run web rake db:migrate
+5- docker-compose run web rake db:setup
 
-6- docker-compose up
+6- docker-compose run web rake db:migrate
 
-7- Acessar no navegador o endereço 0.0.0.0/3000 e criar um usuário
+7- docker-compose up
+
+8- Acessar no navegador o endereço 0.0.0.0/3000 e criar um usuário
 
 ## Requisitos Funcionais implementado:
 

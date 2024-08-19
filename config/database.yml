@@ -1,4 +1,10 @@
+
 default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
   adapter: postgresql
   encoding: unicode
   username: <%= ENV['DB_USERNAME'] %>
@@ -8,11 +14,11 @@ default: &default
   database: <%= ENV['DB_NAME'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-development:
-  <<: *default
-
 test:
   <<: *default
 
 production:
   <<: *default
+  database: maino_production
+  username: maino
+  password: <%= ENV["MAINO_DATABASE_PASSWORD"] %>
